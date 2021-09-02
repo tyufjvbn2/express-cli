@@ -1,0 +1,89 @@
+{
+  "name": "express-mold",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "NODE_ENV=test jest --detectOpenHandles --forceExit --verbose",
+    "build": "rimraf dist && rimraf artifact && tsc -b && cp .env* dist",
+    "start:dev": "NODE_ENV=development nodemon --config nodemon.json",
+    "start": "NODE_ENV=development ts-node src/server.ts",
+    "coverage": "NODE_ENV=test rimraf coverage && jest --coverage --silent --detectOpenHandles --forceExit"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
+    "@babel/preset-typescript": "^7.15.0",
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
+    "@types/app-root-path": "^1.2.4",
+    "@types/axios": "^0.14.0",
+    "@types/continuation-local-storage": "^3.2.3",
+    "@types/cors": "^2.8.12",
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.13",
+    "@types/jest": "^27.0.1",
+    "@types/node": "^16.7.10",
+    "@types/supertest": "^2.0.11",
+    "@types/winston": "^2.4.4",
+    "@typescript-eslint/eslint-plugin": "^4.30.0",
+    "@typescript-eslint/parser": "^4.30.0",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^27.1.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-typescript": "^2.4.0",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.2",
+    "jest": "^27.1.0",
+    "jest-mock-extended": "^2.0.2-beta2",
+    "nodemon": "^2.0.12",
+    "prettier": "^2.3.2",
+    "rimraf": "^3.0.2",
+    "supertest": "^6.1.6",
+    "ts-jest": "^27.0.5",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.4.2"
+  },
+  "dependencies": {
+    "app-root-path": "^3.0.0",
+    "axios": "^0.21.1",
+    "class-transformer": "^0.4.0",
+    "class-validator": "^0.13.1",
+    "continuation-local-storage": "^3.2.1",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "express-handler-errors": "^2.3.1",
+    "express-request-id": "^1.4.1",
+    "mongodb": "^4.1.1",
+    "morgan-body": "^2.6.6",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.2.37",
+    "winston": "^3.3.3",
+    "winston-daily-rotate-file": "^4.5.5",
+    "tslib": "1.11.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true",
+      "pre-commit": "npm test",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "resolutions": {
+    "tslib": "1.11.2"
+  }
+}
